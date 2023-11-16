@@ -32,9 +32,8 @@ const User = ({
         </div>
       </div>
 
-      <Link to={`https://api.github.com/users/${login}/repos`}>
-        Ver melhores projetos
-      </Link>
+      {/* <Link to={`https://api.github.com/users/${login}/repos`}> */}
+      <Link to={"/repos"}>Ver melhores projetos</Link>
     </div>
   );
 };

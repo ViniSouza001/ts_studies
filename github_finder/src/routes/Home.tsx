@@ -4,13 +4,16 @@ import Search from "../components/Search";
 import User from "../components/User";
 import Error from "../components/Error";
 
-export const Home = () => {
+const Home = () => {
   const [user, setUser] = useState<UserProps | null>(null);
+  const [userName, setUserName] = useState("");
   const [error, setError] = useState(false);
+  const [showProjects, setShowProjects] = useState(false);
 
   const loadUser = async (userName: string) => {
     setError(false);
     setUser(null);
+    setShowProjects(false);
     const res = await fetch(`https://api.github.com/users/${userName}`);
 
     const data = await res.json();
@@ -32,13 +35,18 @@ export const Home = () => {
       following,
     };
     setUser(userData);
+    setUserName(userData.login);
+    localStorage.removeItem("user");
+    localStorage.setItem("user", JSON.stringify(userName));
   };
 
   return (
     <div>
       <Search loadUser={loadUser} />
-      {user && <User {...user} />}
+      {user && !showProjects && <User {...user} />}
       {error && <Error />}
     </div>
   );
 };
+
+export default Home;
