@@ -18,8 +18,6 @@ const Home = () => {
 
     const data = await res.json();
 
-    console.log(data);
-
     if (res.status === 404) {
       setError(true);
       return;

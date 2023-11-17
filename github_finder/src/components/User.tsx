@@ -31,8 +31,6 @@ const User = ({
           <p className={classes.number}>{following}</p>
         </div>
       </div>
-
-      {/* <Link to={`https://api.github.com/users/${login}/repos`}> */}
       <Link to={"/repos"}>Ver melhores projetos</Link>
     </div>
   );
